@@ -4,7 +4,7 @@
   "description": "generates teams to an html page",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -12,6 +12,7 @@
   },
   "author": "Ryan Brisch",
   "license": "MIT",
+  "devDependencies": {"jest": "^28.1.0"},
   "bugs": {
     "url": "https://github.com/brischster/Starting-Line-Up-Generator/issues"
   },
