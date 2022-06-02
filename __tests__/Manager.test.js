@@ -1,5 +1,3 @@
-const { exportAllDeclaration } = require("@babel/types");
-const { describe } = require("yargs");
 const Employee = require("../index");
 
 describe("Employee", () => {
@@ -8,9 +6,9 @@ describe("Employee", () => {
       // Arrange & Act
       const obj = new Employee();
       // Assert
-      expect("name" in obj).toEqual(true);
+      expect("name" in obj).toBeInstanceOf(true); // this should tobeaninstanceof the employee class toBeInstanceOf
     });
-    it("should set up an 'id or number' when create", () => {
+    it("should set up an 'id or number' when created", () => {
       //Arrange
       const id = 10;
       // Act
@@ -42,10 +40,10 @@ describe("Employee", () => {
       //const name2 = "Tom";
 
       // Act  this destructing i want value of 'name'
-      const { name } = new Employee(name1).getName(name1); // hope and a prayer should be in the new object I create with getName function b/c it is name of an employee?
+      const obj = new Employee(name1).getName(); // hope and a prayer should be in the new object I create with getName function b/c it is name of an employee?
 
       //Assert
-      expect(name).toEqual(name1);
+      expect(obj.name).toEqual(name1);
     });
     describe("getID", () => {
       it("should return a new 'Employee id' object", () => {
@@ -54,10 +52,10 @@ describe("Employee", () => {
         const id1 = 2;
 
         // Act
-        const { id } = new Employee(id1).getID(id1);
+        const obj = new Employee(id1).getID();
 
         // Assert
-        expect(id).toEqual(id1);
+        expect(obj.id).toEqual(id1);
       });
     });
   });
