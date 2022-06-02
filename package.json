@@ -12,12 +12,15 @@
   },
   "author": "Ryan Brisch",
   "license": "MIT",
-  "devDependencies": {"jest": "^28.1.0"},
+  "devDependencies": {
+    "jest": "^28.1.0"
+  },
   "bugs": {
     "url": "https://github.com/brischster/Starting-Line-Up-Generator/issues"
   },
   "homepage": "https://github.com/brischster/Starting-Line-Up-Generator#readme",
   "dependencies": {
+    "email-validator": "^2.0.4",
     "inquirer": "^8.2.4",
     "jest": "^28.1.0"
   }
