@@ -5,6 +5,7 @@ const fs = require("fs");
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
+const path = require("path");
 
 // based off of stackoverflow and examples, should I be setting this up like:
 
@@ -12,6 +13,7 @@ const Intern = require("./lib/intern");
 
 // }]
 const fullTeam = [];
+let htmlData = "";
 
 const managerQuestions = [
   {
