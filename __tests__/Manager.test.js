@@ -1,62 +1,30 @@
-const Employee = require("../index");
+const Manager = require("../lib/manager.js");
 
-describe("Employee", () => {
-  describe("Initialization", () => {
-    it("should return an object of strings when called with 'new' keyword", () => {
-      // Arrange & Act
-      const obj = new Employee();
-      // Assert
-      expect("name" in obj).toBeInstanceOf(true); // this should tobeaninstanceof the employee class toBeInstanceOf
-    });
-    it("should set up an 'id or number' when created", () => {
-      //Arrange
-      const id = 10;
-      // Act
-      const obj = new Employee(id);
+describe("Manager", () => {
+  it("should create a new manager obj with name, email, id, office number", () => {
+    //Arrange
+    const obj = new Manager("Ryan", "ryan@hotmail.com", 1, 10);
 
-      // Assert
-      expect(obj.id).toBeGreaterThan(0); // might need to change this back to be num instead of zero
-    });
-    it("should return an object with a string as input for email", () => {
-      // Arrange
-      const email = "string";
-      // Act
-      const obj = new Employee(email);
-      // Assert
-      expect(obj.email).toMatch("string");
-    });
+    // Assert
+    expect(obj.name).toEqual("Ryan");
+    expect(obj.email).toEqual("ryan@hotmail.com");
+    expect(obj.id).toEqual(1);
+    expect(obj.officeNumber).toEqual(10);
   });
-  describe("getName", () => {
-    it("should return a new 'Employee' object", () => {
-      //Arrange & Act
-      const obj = new Employee("name").getName("name");
-      // Assert
-      expect(obj instanceof Employee).toEqual(true);
-    });
-    it("should return an object with all objects 'names' included", () => {
-      // I believe I am trying to write a function that produces a new object that includes all employee's name?
-      //Arrange
-      const name1 = "Karl"; // or do I use an actual name, "Karl"
-      //const name2 = "Tom";
+  it("should get a new Manager's office", () => {
+    // Arrange
+    const obj = new Manager("Ryan", "ryan@hotmail.com", 1, 10);
+    // Act
+    const { officeNumber } = obj;
+    // Assert
+    expect(obj.getOfficeNumber()).toBe(officeNumber);
+  });
 
-      // Act  this destructing i want value of 'name'
-      const obj = new Employee(name1).getName(); // hope and a prayer should be in the new object I create with getName function b/c it is name of an employee?
+  it("should update Manager's role", () => {
+    // Arrange
+    const obj = new Manager("Ryan", "ryan@hotmail.com", 1, 10);
 
-      //Assert
-      expect(obj.name).toEqual(name1);
-    });
-    describe("getID", () => {
-      it("should return a new 'Employee id' object", () => {
-        // do i need to test instanceof for every method on the class/constructor?
-        //Arrange
-        const id1 = 2;
-
-        // Act
-        const obj = new Employee(id1).getID();
-
-        // Assert
-        expect(obj.id).toEqual(id1);
-      });
-    });
+    // Assert
+    expect(obj.getRole()).toBe("Manager");
   });
 });
