@@ -1,11 +1,10 @@
 const inquirer = require("inquirer");
 //const jest = require("jest"); I don't think i need this required into here... will google
-const emailValidator = require("email-validator");
 const fs = require("fs");
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
-const path = require("path");
+const renderCards = require("./lib/renderCards");
 
 // based off of stackoverflow and examples, should I be setting this up like:
 
@@ -13,7 +12,7 @@ const path = require("path");
 
 // }]
 const fullTeam = [];
-let htmlData = "";
+//let htmlData = "";
 
 const managerQuestions = [
   {
@@ -24,7 +23,7 @@ const managerQuestions = [
   {
     type: "number",
     message: "What is the Manager's ID number?",
-    name: "iD",
+    name: "id",
     validate: function (number) {
       if (number > 0) {
         return true;
@@ -52,7 +51,7 @@ const engineerQuestions = [
   {
     type: "number",
     message: "What is the engineer's ID number?",
-    name: "iD",
+    name: "id",
     validate: function (number) {
       if (number > 0) {
         return true;
@@ -80,7 +79,7 @@ const internQuestions = [
   {
     type: "number",
     message: "What is the Intern's ID number?",
-    name: "iD",
+    name: "id",
     validate: function (number) {
       if (number > 0) {
         return true;
@@ -113,7 +112,7 @@ function promptManager() {
     const teamMember = new Manager(
       data.name,
       data.email,
-      data.iD,
+      data.id,
       data.officeNum
     );
     fullTeam.push(teamMember);
@@ -126,7 +125,7 @@ function promptEngineer() {
     const teamMember = new Engineer(
       data.name,
       data.email,
-      data.iD,
+      data.id,
       data.github
     );
     fullTeam.push(teamMember);
@@ -136,7 +135,7 @@ function promptEngineer() {
 
 function promptIntern() {
   inquirer.prompt(internQuestions).then((data) => {
-    const teamMember = new Intern(data.name, data.email, data.iD, data.school);
+    const teamMember = new Intern(data.name, data.email, data.id, data.school);
     fullTeam.push(teamMember);
     promptAdditionalTeamMember();
   });
@@ -150,9 +149,14 @@ function promptAdditionalTeamMember() {
       promptIntern(); // not correct, placeholder
     } else {
       //render HTML page placeholder again
-      console.log(fullTeam);
+      saveData();
     }
   });
 }
+
+const saveData = () => {
+  const htmlData = renderCards(fullTeam);
+  fs.writeFileSync("dist/index.html", htmlData);
+};
 
 promptManager();
