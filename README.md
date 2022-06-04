@@ -22,7 +22,7 @@ The Starting line up generator uses Inquirer library to ask a user a handful of 
 
 ### <ins>How to Use </ins>
 
-[Video Tutorial of how to use the program]()
+[Video Tutorial of how to use the program](https://drive.google.com/file/d/1dvlyd1OzdwrDNto3OVM--NmTwIRjvSGs/view)
 
 ### <ins>How to Contribute </ins>
 
@@ -55,5 +55,5 @@ Jest</br>
 ### <ins>Author's Contact Information</ins>
 
 Ryan Brisch</br>
-[Github Profile](github/brischster.com)</br>
+[Github Profile](https://github.com/brischster)</br>
 [Email Ryan](mailto:brischster@gmail.com)
